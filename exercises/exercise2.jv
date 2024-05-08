@@ -16,7 +16,7 @@ pipeline TreePipeline {
     block TreeCSVInterpreter oftype CSVInterpreter { delimiter: ";"; }
 
     //drop "baumart_deutsch" Column
-    block BaumartdeColumnDrop oftype ColumnDeleter { delete: [column D]; }
+    block BaumartdeColumnDrop oftype ColumnDeleter { delete: [column E]; }
 
     block TreeTableInterpreter oftype TableInterpreter {
 
