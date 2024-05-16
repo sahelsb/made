@@ -47,7 +47,7 @@ This dataset contains information on air pollution indicators including particul
 [i3]: https://github.com/sahelsb/made/issues/3
 [i4]: https://github.com/sahelsb/made/issues/4
 [i5]: https://github.com/sahelsb/made/issues/5
-[i5]: https://github.com/sahelsb/made/issues/6
+[i6]: https://github.com/sahelsb/made/issues/6
 
 
 
