@@ -105,14 +105,14 @@ class DataPipeline:
         except Exception as e:
             log.error(f"Error connecting to database:{e}")
     
-    def read_from_sql(self):
-        print("Reading from sql")
-        try:
-            conn = create_engine(f'sqlite:///data/data.sqlite')
-        except Exception as e:
-            print(f"Error connecting to database:{e}")
-        df_temp = pd.read_sql('SELECT * FROM air_pollution', conn)
-        print(df_temp)
+    # def read_from_sql(self):
+    #     print("Reading from sql")
+    #     try:
+    #         conn = create_engine(f'sqlite:///data/data.sqlite')
+    #     except Exception as e:
+    #         print(f"Error connecting to database:{e}")
+    #     df_temp = pd.read_sql('SELECT * FROM air_pollution', conn)
+    #     print(df_temp)
 
     def run_pipeline(self):
         # Extract data
@@ -129,8 +129,8 @@ class DataPipeline:
         self.save_to_sql(df_air, df_temp)
         print("Successfully saved to database!")
         
-        # Read from database
-        self.read_from_sql()
+        # # Read from database
+        # self.read_from_sql()
     
 if __name__ == "__main__":
 
