@@ -36,8 +36,8 @@ WHO data can be used for research and educational purposes, provided proper attr
 
 The data pipeline, implemented in Python, automates the process of data extraction, transformation, and loading (ETL).It consists of several functions:
 
-- Data Extraction: Download datasets from FAO and WHO using the requests library. For the temperature data from FAO, the data is received as a ZIP file. which is extracted using the zipfile library, where the first CSV file inside the ZIP archive is loaded into a pandas DataFrame. For the air quality data from WHO, the data is obtained as an Excel file. The relevant sheet and columns are directly read into a pandas DataFrame using the pandas library with the openpyxl engine. 
-- Data Transformation: Cleans and processes the data to align formats and performs necessary calculations.
+- Data Extraction: Download datasets from FAO and WHO using the requests library. FAOSTAT Climate Change dataset is downloaded as a ZIP file, which is extracted using the zipfile library, where the first CSV file inside the ZIP archive is loaded into a pandas DataFrame. WHO Air Quality dataset is obtained as an Excel file. The relevant sheet and columns are directly read into a pandas DataFrame using the pandas library with the openpyxl engine.<br>
+- Data Transformation: Cleans and processes the data to align formats and performs necessary calculations.<br>
 - Data Storage: Saves the processed data into an SQLite database for further analysis.
 
 ##### Transformation steps
@@ -45,12 +45,12 @@ The data pipeline, implemented in Python, automates the process of data extracti
 | Dataset                                 | Transformations                                                                                                           |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | FAOSTAT Climate Change/WHO Air Quality | - Rename columns to ensure consistency across datasets.<br>- Drop unnecessary columns from the datasets.<br>- Round numeric columns (pollutant concentrations and temperature changes) to ensure readability.<br>- Drop missing values. |
-| FAOSTAT Climate Change                 | - Filter temperature dataset to include only data related to temperature change.<br>- Reshape temperature dataset to store years as a single column.<br>- Aggregate temperature change data on a yearly basis. |
+| FAOSTAT Climate Change                 | - Filter temperature dataset to include only data related to temperature change.<br>- Reshape temperature dataset to store years as a single column.<br>|
 | WHO Air Quality                        | - Filter air quality dataset to include data for only selected European countries.<br>- Aggregate air quality data on country level <br>- Drop missing values from the air quality dataset to ensure data integrity. |
 
 
 -Since both datasets has missing values that could skew the analysis, the missing values are dropped to ensure data integrity.<br><br>
--FAOSTAT Climate Change dataset includes years as separate columns, so it is reshaped to store years as one column named "Year." Additionally, since the dataset includes temperature changes for each month, the data is aggregated by calculating the mean temperature change for each year.<br><br>
+-FAOSTAT Climate Change dataset includes years as separate columns, so it is reshaped to store years as one column.<br><br>
 -WHO Air Quality dataset includes pollutant concentrations for different cities within each country. The data is aggregated by calculating the mean pollutant concentrations for each country to ensure consistency.
 
                   
@@ -62,11 +62,15 @@ However, the pipeline currently does not fully support automatic adaptation to c
 
 #### 4.&nbsp;&nbsp;  Result and Limitations 
 
-The output data of the pipeline is stored in a SQLite database. We chose SQLite as the output format due to its simplicity, portability, and compatibility with Python. Storing the data in a relational database facilitates efficient data retrieval and manipulation for subsequent analysis.
+#### 4.1 Output
 
--The temperature dataset covers the years from 1960 to 2022, while the WHO air quality dataset only spans from 2013 to 2022. This inconsistency in the range of years may pose challenges in interpreting trends and limit the comprehensiveness of the analysis.
+The output data of the pipeline is stored as two tables in a SQLite database. Storing the data in a relational database facilitates efficient data retrieval and manipulation for subsequent analysis.
 
--While the data sources are reputable, the accuracy of measurements and reporting may vary between countries and over time. It's essential to acknowledge potential inaccuracies and limitations when comparing between different countires.
+#### 4.2 Limitations
+
+-Temporal Inconsistency: While the temperature dataset offers a long-term perspective, the air quality data is limited to recent years. The differing ranges of years between the two datasets may pose challenges in interpreting trends and limit the comprehensiveness of the analysis.
+
+-Data Accuracy and Reporting: Despite the reputability of the data sources, the accuracy of measurements and reporting can vary between countries and over time. These potential inaccuracies and variations must be acknowledged when comparing data between different countries and periods.
 
 
 
