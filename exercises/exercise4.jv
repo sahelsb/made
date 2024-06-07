@@ -1,0 +1,69 @@
+pipeline Temperature {
+
+    DataExtractor
+    ->TemperatureTextFileInterpreter
+    ->TemperatureCSVInterpreter
+    ->TemperatureColumnDeleter
+    ->TemperatureTableInterpreter
+    ->TemperatureTransformer
+    ->BatteryTemperatureTransformer
+    ->DatabaseLoader;
+
+    block DataExtractor oftype LocalFileExtractor {
+       filePath: "./data/data.csv";
+    }
+
+    block TemperatureTextFileInterpreter oftype TextFileInterpreter { encoding : "utf8";}
+
+    block TemperatureCSVInterpreter oftype CSVInterpreter { 
+        delimiter: ";"; 
+    }
+
+    block TemperatureColumnDeleter oftype ColumnDeleter {
+   delete: [column F,column G,column H,column I];
+   }
+
+    block TemperatureTableInterpreter oftype TableInterpreter {
+    header: false;
+        columns: [
+            "id" oftype PositiveIntType,
+            "producer" oftype text,
+            "model" oftype text,
+            "month" oftype integer,
+            "temperature" oftype decimal,
+            "battery_temperature" oftype decimal
+        ];
+    }
+
+    block TemperatureTransformer oftype TableTransformer {
+        inputColumns: ['temperature'];
+        outputColumn: 'temperature';
+        use: CelsiusToFahrenheit;
+    }
+
+    block BatteryTemperatureTransformer oftype TableTransformer {
+    inputColumns: ['battery_temperature'];
+    outputColumn: 'batterytemperature';
+    use: CelsiusToFahrenheit;
+}
+
+    block DatabaseLoader oftype SQLiteLoader { table: "temperatures"; file: "./data/temperatures.sqlite"; }
+
+    }
+    
+
+//set valid values for temperature
+transform CelsiusToFahrenheit {
+    from Celsius oftype decimal;
+    to Fahrenheit oftype decimal;
+    Fahrenheit: (Celsius * 9/5) + 32;
+}
+
+//set valid values for id
+valuetype PositiveIntType oftype integer {
+        constraints: [ PositiveIntConstraint ];
+    }
+
+constraint PositiveIntConstraint on integer:
+    value > 0;
+
