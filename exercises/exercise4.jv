@@ -61,7 +61,7 @@ pipeline Temperature {
     use: CelsiusToFahrenheit;
 }
 
-    block DatabaseLoader oftype SQLiteLoader { table: "temperatures"; file: "./data/temperatures.sqlite"; }
+    block DatabaseLoader oftype SQLiteLoader { table: "temperatures"; file: "./temperatures.sqlite"; }
 
     }
     
