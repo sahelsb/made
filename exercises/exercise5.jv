@@ -21,7 +21,7 @@ pipeline Stops {
         path: "/stops.txt"    ;
     }
 
-    block StopsTextFileInterpreter oftype TextFileInterpreter { encoding : "latin2";}
+    block StopsTextFileInterpreter oftype TextFileInterpreter { encoding : "utf8";}
 
     block StopsCSVInterpreter oftype CSVInterpreter { 
         delimiter: ","; 
