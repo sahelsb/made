@@ -8,6 +8,7 @@ import os
 
 
 class DataPipeline:
+    
     def __init__(self, air_url, temperature_url):
         self.air_url = air_url
         self.temperature_url = temperature_url
@@ -58,9 +59,9 @@ class DataPipeline:
         df["Year"] = df["Year"].astype(int)
         df[["PM10", "PM25", "NO2"]].astype(float)
         df[["PM10", "PM25", "NO2"]] = df[["PM10", "PM25", "NO2"]].round(2)
-        # Calculate Mean pollutant concentartions per country
-        # df = df.groupby(["Code", "Country", "Year"]).agg(
-            # {"PM10": "mean", "PM25": "mean", "NO2": "mean"}).reset_index()
+        #Calculate Mean pollutant concentartions per country
+        df = df.groupby(["Code", "Country", "Year"]).agg(
+             {"PM10": "mean", "PM25": "mean", "NO2": "mean"}).reset_index()
         df = df.dropna()
         return df
 
@@ -129,7 +130,7 @@ class DataPipeline:
         self.save_to_sql(df_air, df_temp)
         print("Successfully saved to database!")
         
-        # # Read from database
+        # Read from database
         # self.read_from_sql()
     
 if __name__ == "__main__":
