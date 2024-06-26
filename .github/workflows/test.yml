@@ -25,7 +25,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./project/tests/requirements.txt  
 
+      - name: Make test script executable
+        run: 
+          chmod +x project/test.sh
+      
       - name: Run tests
         run: 
-          chmod +x ./project/test.sh
-          ./project/test.sh 
+          project/test.sh 
