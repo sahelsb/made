@@ -108,5 +108,7 @@ class TestDataPipeline:
         assert not air_df.empty, "air_pollution table is empty"
         assert not temp_df.empty, "temperature table is empty"
 
+        engine.dispose()
+
 if __name__ == '__main__':
     pytest.main()

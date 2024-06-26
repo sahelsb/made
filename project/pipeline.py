@@ -103,6 +103,7 @@ class DataPipeline:
                                 if_exists='replace',  index=False)
             df_temp.to_sql(name="temperature", con=conn,
                                 if_exists='replace',  index=False)
+            conn.dispose()
         except Exception as e:
             log.error(f"Error connecting to database:{e}")
     
