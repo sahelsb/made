@@ -1,7 +1,7 @@
 # Project Plan
 
 ## Title
-Exploring the Interplay Between Climate Change indicators and Air Pollution levels in United States during the years 2010-2020
+Exploring the Interplay Between Climate Change indicators and Air Pollution levels in selected european countires during the years 2010-2020
 
 
 ## Main Question
@@ -12,29 +12,29 @@ Exploring the Interplay Between Climate Change indicators and Air Pollution leve
 ## Description
 
 Climate change and air pollution, both products of human activity, represent urgent global challenges. Climate change brings rising temperatures, altered weather patterns, and increased extreme events, threatening ecosystems and human well-being. Meanwhile, air pollution, stemming from industrial processes and transportation, poses significant health risks and ecological harm.
-In light of these intertwined challenges, this project seeks to explore the correlation between climate change and air pollution. By unraveling the complex interplay between these critical environmental factors, we aim to inform evidence-based strategies for mitigating their adverse impacts on human health, ecosystems, and the planet's resilience.
-
+In light of these intertwined challenges, this project seeks to explore the correlation between climate change and air pollution. 
 
 ## Datasources
 
-### Datasource1: 
+### Datasource1: FAOSTAT Climate Change Data
 * Metadata URL: https://www.fao.org/faostat/en/#data/ET/metadata
 * Data URL: "https://fenixservices.fao.org/faostat/static/bulkdownloads/Environment_Temperature_change_E_All_Data.zip"
 * Data Type: CSV
 * Licensing type: CC BY-NC-SA 3.0 IGO
 
-This dataset provides historical records of climate variables by countries.
+This dataset provides historical records of monthly temperature changes.
 
-### Datasource2: 
+### Datasource2: WHO Ambient Air Quality Data
 * Data Overview URL: "https://www.who.int/publications/m/item/who-ambient-air-quality-database-(update-jan-2024)"
 * Metadata URL: "https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/     
             who_ambient_air_quality_database_version_2024_(v6.1).xlsx?sfvrsn=c504c0cd_3&download=true"
 * Data URL: "https://cdn.who.int/media/docs/default-source/air-pollution-documents/air-quality-and-health/     
             who_ambient_air_quality_database_version_2024_(v6.1).xlsx?sfvrsn=c504c0cd_3&download=true"
 * Data Type: Excel
-* Licensing type: https://www.who.int/about/policies/publishing/copyright
+* Licensing type: CC BY-NC-SA 3.0 IGO
 
-This dataset contains information on air pollution indicators including particulate matter (PM10), particulate matter (PM2.5), nitrogen dioxide (NO2) by countries.
+This dataset compiles data on ground measurements of annual mean concentrations of nitrogen dioxide (NO2) and particulate matter(PM10, PM2.5), which aim at representing an average for the cities. Both groups of pollutants originate mainly from human activities related to fossil fuel combustion.
+
 
 
 
