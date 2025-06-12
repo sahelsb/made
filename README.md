@@ -12,6 +12,41 @@ The primary objective of this analysis is to address the following key questions
 
 For the analysis, two datasets from open data sources FAOSTAT and WHO are used. Detailed information on data sources, the data pipeline, and analysis results can be found in the project folder.
 
+#### Project Overview
+
+This project includes an ETL pipeline that performs data transformation and loading tasks. The resulting datasets are saved in the `/data` directory and are used for further analysis.
+
+#### Run the Pipeline
+
+To execute the ETL pipeline, run the following bash script:
+
+```
+bash project/pipeline.sh
+```
+
+#### Test the Pipeline
+
+A test environment is provided to validate the ETL pipeline. To run the tests:
+
+```
+bash project/tests.sh
+```
+
+Additionally, a GitHub Action has been configured under [CI](.github/workflows/test.yml). This action automatically runs the tests on every push to the main branch.
+
+#### Project Resources
+
+[Data Report](project/data-report.pdf)
+Detailed documentation on the data sources and the implemented ETL pipeline.
+
+[Analysis Report](project/analysis-report.pdf)
+A comprehensive summary of the analysis results.
+
+[Jupyter Notebook](project/analysis-report.ipynb)
+Interactive notebook exploring the main research questions of the project.
+
+
+
 
 
 
