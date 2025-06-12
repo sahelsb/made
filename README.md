@@ -42,7 +42,7 @@ Detailed documentation on the data sources and the implemented ETL pipeline.
 [Analysis Report](project/analysis-report.pdf)
 A comprehensive summary of the analysis results.
 
-[Jupyter Notebook](project/analysis-report.ipynb)
+[Jupyter Notebook](project/data-exploration.ipynb)
 Interactive notebook exploring the main research questions of the project.
 
 
